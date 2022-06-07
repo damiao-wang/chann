@@ -12,6 +12,7 @@ import (
 )
 
 // Fanin provides a generic fan-in functionality for variadic channels.
+// 四海归一
 func Fanin[T any](chans ...*Chann[T]) *Chann[T] {
 	buf := 0
 	for _, ch := range chans {
@@ -38,6 +39,7 @@ func Fanin[T any](chans ...*Chann[T]) *Chann[T] {
 }
 
 // Fanout provides a generic fan-out functionality for variadic channels.
+// 将in的数据随机发送给outs队列中的一个
 func Fanout[T any](randomizer func(max int) int, in *Chann[T], outs ...*Chann[T]) {
 	l := len(outs)
 	for v := range in.Out() {
